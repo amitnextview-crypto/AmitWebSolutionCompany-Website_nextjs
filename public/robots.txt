@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://amit-web-solution-company-website-n.vercel.app
+
+# Sitemaps
+Sitemap: https://amit-web-solution-company-website-n.vercel.app/sitemap.xml
