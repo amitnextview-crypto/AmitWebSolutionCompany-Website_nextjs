@@ -5,6 +5,10 @@ yarn-debug.log*
 yarn-error.log*
 
 # Build outputs
+.next
+node_modules
+.env*
+
 dist/
 build/
 public/build/
