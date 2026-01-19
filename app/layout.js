@@ -2,8 +2,9 @@
 import './globals.css';
 
 export const metadata = {
-  title: 'Amit Web Solutions',
-  description: 'Premium animated websites that convert visitors into customers'
+  title: "AmitWebSolution – High Converting Business Websites",
+  description:
+    "Premium website designer & developer building fast, SEO-optimized websites for businesses.",
 };
 
 export default function RootLayout({ children }) {
