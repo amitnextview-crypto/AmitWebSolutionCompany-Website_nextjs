@@ -36,7 +36,7 @@ const projects = [
   {
     title: 'Nextview Product Details Page',
     client: 'Nextview Technologies India Pvt Ltd.',
-    image: '/projects/product_details.png',
+    image: '/projects/productdetails.jpg',
     description:
       'All-in-one product details page designed to boost trust and conversions.',
     review:
