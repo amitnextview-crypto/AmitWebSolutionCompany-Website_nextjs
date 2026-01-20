@@ -18,6 +18,12 @@ export default function Home() {
             <a href="/work" className="text-sm text-gray-300 hover:text-white mt-2">
               Work
             </a>
+            <a href="/services" className="text-sm text-gray-300 hover:text-white mt-2">
+              Services
+            </a>
+            <a href="/about" className="text-sm text-gray-300 hover:text-white mt-2">
+              About
+            </a>
             <a
               href="#contact"
               className="bg-primary px-4 py-2 rounded-full text-sm font-medium"
