@@ -6,17 +6,16 @@ export default function About() {
   return (
     <main className="relative pb-32">
       <StarBackground />
-
-      {/* BACK */}
-      <a
+ <a
         href="/"
-        className="fixed top-4 right-4 z-50 bg-black/70 hover:bg-black/90 px-4 py-2 rounded-full text-sm"
+        className="fixed top-4  right-12 md:right-4 z-50 bg-black/70 hover:bg-black/90 px-4 py-2 rounded-full text-sm"
       >
         ← Back
       </a>
 
       {/* HERO */}
       <section className="pt-32 pb-20 text-center max-w-4xl mx-auto px-4">
+         {/* BACK */}
         <motion.h1
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}

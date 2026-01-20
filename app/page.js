@@ -8,7 +8,7 @@ export default function Home() {
       <StarBackground />
 
       {/* NAVBAR */}
-      <nav className="fixed top-0 w-full backdrop-blur bg-black/40 border-b border-white/10 z-50">
+      {/* <nav className="fixed top-0 w-full backdrop-blur bg-black/40 border-b border-white/10 z-50">
         <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
           <a href="/" className="font-bold text-lg sm:text-xl">
             Amit<span className="text-primary">WebSolution</span>
@@ -32,7 +32,7 @@ export default function Home() {
             </a>
           </div>
         </div>
-      </nav>
+      </nav> */}
 
       {/* HERO */}
       <section className="min-h-screen flex items-center justify-center text-center px-4">

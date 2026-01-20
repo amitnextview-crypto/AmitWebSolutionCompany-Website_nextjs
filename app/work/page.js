@@ -51,12 +51,13 @@ export default function Work() {
       <StarBackground />
 
       {/* BACK BUTTON */}
-      <a
+     <a
         href="/"
-        className="fixed top-4 right-4 z-50 bg-black/70 hover:bg-black/90 text-white px-4 py-2 rounded-full flex items-center gap-2 text-sm"
+        className="fixed top-4  right-12 md:right-4 z-50 bg-black/70 hover:bg-black/90 px-4 py-2 rounded-full text-sm"
       >
         ← Back
       </a>
+
 
       {/* HEADER */}
       <section className="pt-32 pb-20 text-center max-w-4xl mx-auto px-4">
