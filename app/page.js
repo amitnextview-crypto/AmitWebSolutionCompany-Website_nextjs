@@ -1,173 +1,305 @@
-'use client';
-import { motion } from 'framer-motion';
-import StarBackground from '../components/StarBackground';
+import Link from "next/link";
+import {
+  company,
+  faqItems,
+  featuredProjects,
+  pricingPlans,
+  processSteps,
+  serviceGroups,
+  stats,
+} from "../lib/siteContent";
 
 export default function Home() {
   return (
-    <main className="relative">
-      <StarBackground />
+    <main className="page-shell">
+      <div className="hero-orb one" />
+      <div className="hero-orb two" />
 
-      {/* NAVBAR */}
-      {/* <nav className="fixed top-0 w-full backdrop-blur bg-black/40 border-b border-white/10 z-50">
-        <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-          <a href="/" className="font-bold text-lg sm:text-xl">
-            Amit<span className="text-primary">WebSolution</span>
-          </a>
+      <section className="mx-auto max-w-7xl px-4 pb-16 pt-36 sm:px-6 lg:px-8 lg:pt-40">
+        <div className="grid gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
+          <div>
+            <span className="eyebrow">Websites, web apps, signage systems and APK delivery</span>
+            <h1 className="section-title mt-6 max-w-4xl text-4xl font-black leading-tight text-white sm:text-5xl lg:text-7xl">
+              Big-company style websites and business software for brands that want to look serious.
+            </h1>
+            <p className="muted mt-6 max-w-2xl text-lg leading-8 text-balance">
+              {company.shortName} builds premium websites, payroll and payslip tools, signage web
+              systems, license key workflows, Android-ready products and SEO-focused company pages
+              that help businesses look stronger online.
+            </p>
 
-          <div className="flex gap-4">
-            <a href="/work" className="text-sm text-gray-300 hover:text-white mt-2">
-              Work
-            </a>
-            <a href="/services" className="text-sm text-gray-300 hover:text-white mt-2">
-              Services
-            </a>
-            <a href="/about" className="text-sm text-gray-300 hover:text-white mt-2">
-              About
-            </a>
-            <a
-              href="#contact"
-              className="bg-primary px-4 py-2 rounded-full text-sm font-medium"
-            >
-              Get Quote
-            </a>
+            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+              <a
+                href={`${company.whatsapp}?text=Hi%20Amit%2C%20I%20want%20a%20premium%20website%20or%20software%20project`}
+                className="rounded-full bg-primary px-7 py-4 text-center text-base font-semibold text-slate-950 transition hover:brightness-110"
+              >
+                Start Your Project
+              </a>
+              <Link
+                href="/work"
+                className="cta-border rounded-full px-7 py-4 text-center text-base font-semibold text-white"
+              >
+                View Real Projects
+              </Link>
+            </div>
+
+            <div className="mt-10 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+              {stats.map((item) => (
+                <div key={item.label} className="glass-card rounded-3xl p-5">
+                  <p className="text-2xl font-bold text-white">{item.value}</p>
+                  <p className="muted mt-1 text-sm">{item.label}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="glass-card-strong rounded-[2rem] p-6 sm:p-8">
+            <div className="rounded-[1.5rem] border border-white/10 bg-slate-950/60 p-6">
+              <p className="text-sm font-semibold uppercase tracking-[0.32em] text-amber-200/80">
+                Why this website feels stronger
+              </p>
+              <div className="mt-6 space-y-5">
+                {[
+                  "Premium structure with clear service positioning",
+                  "Real project proof instead of generic portfolio copy",
+                  "Founder-led affordable pricing for Indian businesses",
+                  "SEO-ready content and high-trust company messaging",
+                ].map((item) => (
+                  <div key={item} className="flex gap-3">
+                    <span className="mt-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-emerald-400/15 text-sm text-emerald-300">
+                      +
+                    </span>
+                    <p className="muted text-sm leading-7">{item}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="mt-6 rounded-[1.5rem] border border-amber-300/20 bg-amber-400/10 p-6">
+              <p className="text-sm font-semibold text-amber-200">Verified public proof</p>
+              <h2 className="mt-2 text-2xl font-bold text-white">Signage Player CMS and activation platform</h2>
+              <p className="muted mt-3 text-sm leading-7">
+                Your public GitHub repository shows device onboarding, activation flow, admin
+                dashboard, CMS management and Android-ready dependencies in one real system.
+              </p>
+              <a
+                href={company.githubProof}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-5 inline-flex rounded-full border border-amber-300/30 px-5 py-3 text-sm font-semibold text-amber-100 transition hover:bg-amber-300/10"
+              >
+                Open GitHub Proof
+              </a>
+            </div>
           </div>
         </div>
-      </nav> */}
-
-      {/* HERO */}
-      <section className="min-h-screen flex items-center justify-center text-center px-4">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8 }}
-        >
-         <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold leading-tight">
-  High-Converting Websites for
-  <span className="text-primary"> Serious Businesses</span>
-</h1>
-
-<p className="mt-6 max-w-xl mx-auto text-gray-300">
-  I build fast, premium & SEO-ready websites that turn visitors into paying customers.
-</p>
-
-
-
-
-          <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="#contact"
-              className="bg-primary px-8 py-4 rounded-full font-semibold"
-            >
-              Free Consultation
-            </a>
-            <a
-              href="/work"
-              className="border border-white/20 px-8 py-4 rounded-full"
-            >
-              View Work
-            </a>
-          </div>
-           <p className="mt-6 text-sm text-gray-400">
-  Trusted by startups & businesses across India • 10+ Projects Delivered
-</p>
-        </motion.div>
-        
       </section>
 
-      {/* SERVICES */}
-      <section className="py-4 max-w-7xl mx-auto px-4">
-        <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12">
-          Services
-        </h2>
+      <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+        <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+          <div>
+            <span className="eyebrow">Services</span>
+            <h2 className="section-title mt-5 text-3xl font-bold text-white sm:text-5xl">
+              Everything needed to present your business like a serious software company
+            </h2>
+          </div>
+          <p className="muted max-w-2xl text-base leading-8">
+            From premium websites to internal business tools, the focus is not only design. The
+            product, copy, hierarchy, proof and SEO structure all work together.
+          </p>
+        </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-          {['Business Website', 'E-Commerce', 'Landing Pages'].map((s, i) => (
-            <motion.div
-              key={i}
-              whileHover={{ y: -10 }}
-              className="bg-white/5 p-6 rounded-2xl border border-white/10"
-            >
-              <h3 className="text-lg font-semibold mb-2">{s}</h3>
-              <p className="text-gray-400 text-sm">
-  Designed to build trust, rank on Google and generate real business leads.
-</p>
-            </motion.div>
+        <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          {serviceGroups.map((service) => (
+            <article key={service.title} className="glass-card rounded-[1.75rem] p-7">
+              <h3 className="text-2xl font-semibold text-white">{service.title}</h3>
+              <p className="muted mt-3 text-sm leading-7">{service.description}</p>
+              <div className="mt-5 space-y-3">
+                {service.items.map((item) => (
+                  <p key={item} className="text-sm text-slate-200">
+                    {item}
+                  </p>
+                ))}
+              </div>
+            </article>
           ))}
         </div>
       </section>
 
-      <section className="py-24 max-w-6xl mx-auto px-4">
-  <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12">
-    Why Clients Choose Me
-  </h2>
-
-  <div className="grid md:grid-cols-3 gap-8">
-    <div className="p-6 border border-white/10 rounded-xl">
-      <h3 className="font-semibold mb-2">Business-Focused Design</h3>
-      <p className="text-gray-400 text-sm">
-        I don’t just design websites — I design sales machines.
-      </p>
-    </div>
-
-    <div className="p-6 border border-white/10 rounded-xl">
-      <h3 className="font-semibold mb-2">SEO & Speed Optimized</h3>
-      <p className="text-gray-400 text-sm">
-        Clean code, fast load time & Google-friendly structure.
-      </p>
-    </div>
-
-    <div className="p-6 border border-white/10 rounded-xl">
-      <h3 className="font-semibold mb-2">Direct Founder Support</h3>
-      <p className="text-gray-400 text-sm">
-        No agency mess — you work directly with me.
-      </p>
-    </div>
-  </div>
-</section>
-
-
-      {/* PRICING */}
-      <section className="py-24 bg-black/40">
-        <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12">
-          Pricing
-        </h2>
-
-        <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="p-6 rounded-2xl border border-white/10 text-center">
-            <h3 className="text-lg">Starter</h3>
-            <p className="text-3xl font-bold mt-2">₹9,999</p>
+      <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+        <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+          <div>
+            <span className="eyebrow">Proof-led projects</span>
+            <h2 className="section-title mt-5 text-3xl font-bold text-white sm:text-5xl">
+              Real delivery experience, not placeholder portfolio cards
+            </h2>
           </div>
-
-          <div className="p-8 rounded-2xl bg-primary text-black text-center scale-105">
-            <h3 className="text-lg">Professional</h3>
-            <p className="text-3xl font-bold mt-2">₹24,999</p>
-          </div>
-
-          <div className="p-6 rounded-2xl border border-white/10 text-center">
-            <h3 className="text-lg">Enterprise</h3>
-            <p className="text-3xl font-bold mt-2">Custom</p>
-          </div>
+          <Link href="/work" className="text-sm font-semibold text-amber-200">
+            Explore all project highlights
+          </Link>
         </div>
-        <p className="text-center text-gray-400 text-sm mt-6">
-  Final pricing depends on features, pages & integrations.
-</p>
 
+        <div className="mt-10 grid gap-6 xl:grid-cols-2">
+          {featuredProjects.slice(0, 4).map((project) => (
+            <article key={project.title} className="glass-card rounded-[2rem] p-7">
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <span className="rounded-full border border-amber-300/25 bg-amber-300/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-amber-100">
+                  {project.type}
+                </span>
+                <div className="flex flex-wrap gap-2">
+                  {project.technologies.map((tech) => (
+                    <span
+                      key={tech}
+                      className="rounded-full border border-white/10 px-3 py-1 text-xs text-slate-300"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <h3 className="mt-5 text-2xl font-semibold text-white">{project.title}</h3>
+              <p className="muted mt-3 text-sm leading-7">{project.description}</p>
+              <div className="mt-5 grid gap-3">
+                {project.outcomes.map((outcome) => (
+                  <p key={outcome} className="text-sm text-slate-200">
+                    {outcome}
+                  </p>
+                ))}
+              </div>
+              {project.proofUrl ? (
+                <a
+                  href={project.proofUrl}
+                  target={project.proofUrl.startsWith("http") ? "_blank" : undefined}
+                  rel={project.proofUrl.startsWith("http") ? "noreferrer" : undefined}
+                  className="mt-6 inline-flex rounded-full border border-white/10 px-5 py-3 text-sm font-semibold text-white transition hover:border-amber-300/30 hover:text-amber-100"
+                >
+                  {project.proofLabel}
+                </a>
+              ) : (
+                <p className="mt-6 text-sm font-semibold text-amber-100">{project.proofLabel}</p>
+              )}
+            </article>
+          ))}
+        </div>
       </section>
 
-      {/* CONTACT */}
-      <section id="contact" className="py-24 text-center px-4">
-        <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-          Let’s Build Something Great
-        </h2>
-        <p className="text-gray-400 mb-6">
-  Tell me about your business and I’ll suggest the best solution — free.
-</p>
-        <a
-          href="https://wa.me/918574700615"
-          className="bg-primary px-10 py-4 rounded-full font-semibold"
-        >
-          Chat on WhatsApp
-        </a>
+      <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+        <div className="grid gap-6 lg:grid-cols-[0.85fr_1.15fr]">
+          <div className="glass-card-strong rounded-[2rem] p-8">
+            <span className="eyebrow">Process</span>
+            <h2 className="section-title mt-5 text-3xl font-bold text-white sm:text-4xl">
+              Simple process, direct communication and founder ownership
+            </h2>
+            <p className="muted mt-4 text-base leading-8">
+              You are not pushed between sales, design and development teams. The product moves
+              faster because one accountable builder handles strategy, design and implementation.
+            </p>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-2">
+            {processSteps.map((step, index) => (
+              <article key={step.step} className="glass-card rounded-[1.75rem] p-7">
+                <p className="text-sm font-semibold uppercase tracking-[0.22em] text-amber-200">
+                  Step {index + 1}
+                </p>
+                <h3 className="mt-3 text-xl font-semibold text-white">{step.step}</h3>
+                <p className="muted mt-3 text-sm leading-7">{step.description}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+        <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+          <div>
+            <span className="eyebrow">Pricing</span>
+            <h2 className="section-title mt-5 text-3xl font-bold text-white sm:text-5xl">
+              Affordable founder-led pricing built for Indian businesses
+            </h2>
+          </div>
+          <p className="muted max-w-2xl text-base leading-8">
+            The pricing is intentionally kept practical because the work is delivered directly by
+            one builder. Final quotation still depends on features, integrations and delivery scope.
+          </p>
+        </div>
+
+        <div className="mt-10 grid gap-6 lg:grid-cols-3">
+          {pricingPlans.map((plan) => (
+            <article
+              key={plan.name}
+              className={`rounded-[2rem] p-8 ${
+                plan.featured ? "glass-card-strong" : "glass-card"
+              }`}
+            >
+              <p className="text-sm font-semibold uppercase tracking-[0.22em] text-amber-200">
+                {plan.name}
+              </p>
+              <h3 className="mt-4 text-4xl font-black text-white">{plan.price}</h3>
+              <p className="muted mt-4 text-sm leading-7">{plan.description}</p>
+              <div className="mt-6 space-y-3">
+                {plan.points.map((point) => (
+                  <p key={point} className="text-sm text-slate-200">
+                    {point}
+                  </p>
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+        <div className="grid gap-6 lg:grid-cols-[1fr_0.95fr]">
+          <div className="glass-card rounded-[2rem] p-8">
+            <span className="eyebrow">FAQ</span>
+            <h2 className="section-title mt-5 text-3xl font-bold text-white sm:text-4xl">
+              Common questions before starting
+            </h2>
+            <div className="mt-8 space-y-5">
+              {faqItems.map((item) => (
+                <article key={item.question} className="rounded-[1.5rem] border border-white/10 bg-white/5 p-5">
+                  <h3 className="text-lg font-semibold text-white">{item.question}</h3>
+                  <p className="muted mt-2 text-sm leading-7">{item.answer}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+
+          <div id="contact" className="glass-card-strong rounded-[2rem] p-8">
+            <span className="eyebrow">Contact</span>
+            <h2 className="section-title mt-5 text-3xl font-bold text-white sm:text-4xl">
+              Need a big-company website, a real business system or a web plus APK build?
+            </h2>
+            <p className="muted mt-4 text-base leading-8">
+              Share your idea, industry and feature list. You will get direct guidance on the best
+              structure, practical scope and affordable starting point.
+            </p>
+
+            <div className="mt-8 space-y-4 text-sm text-slate-200">
+              <p>Email: {company.email}</p>
+              <p>Phone: {company.phone}</p>
+              <p>Public proof: GitHub signage application repository</p>
+            </div>
+
+            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+              <a
+                href={`${company.whatsapp}?text=Hi%20Amit%2C%20I%20want%20to%20discuss%20my%20website%20or%20software%20project`}
+                className="rounded-full bg-primary px-7 py-4 text-center text-base font-semibold text-slate-950"
+              >
+                Chat on WhatsApp
+              </a>
+              <a
+                href={company.githubProof}
+                target="_blank"
+                rel="noreferrer"
+                className="rounded-full border border-white/10 px-7 py-4 text-center text-base font-semibold text-white"
+              >
+                View Public Proof
+              </a>
+            </div>
+          </div>
+        </div>
       </section>
     </main>
   );

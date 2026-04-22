@@ -1,98 +1,113 @@
-'use client';
-import { motion } from 'framer-motion';
-import StarBackground from '../../components/StarBackground';
+import { company, pricingPlans, serviceGroups } from "../../lib/siteContent";
 
-const services = [
-  {
-    title: 'Business Websites',
-    desc: 'High-trust, conversion-focused websites built to attract serious clients and rank on Google.',
-    points: ['SEO-first structure', 'Fast load time', 'Professional UI/UX'],
-  },
-  {
-    title: 'MERN Stack Applications',
-    desc: 'Scalable full-stack web applications using MongoDB, Express, React & Node.js.',
-    points: ['Clean architecture', 'Secure APIs', 'Future-ready'],
-  },
-  {
-    title: 'Landing Pages',
-    desc: 'High-converting landing pages designed for ads, startups & product launches.',
-    points: ['Conversion copy', 'A/B ready', 'Lightning fast'],
-  },
-  {
-    title: 'UI/UX Design',
-    desc: 'Modern, premium interfaces that feel trustworthy and drive action.',
-    points: ['Design systems', 'Mobile-first', 'Brand aligned'],
-  },
-];
+export const metadata = {
+  title: "Services",
+  description:
+    "Explore website development, custom dashboards, signage software, payroll tools, APK-ready solutions and SEO services from Amit Web Solution.",
+};
 
 export default function Services() {
   return (
-    <main className="relative pb-32">
-      <StarBackground />
-
-      {/* BACK */}
-      <a
-        href="/"
-        className="fixed top-4  right-12 md:right-4 z-50 bg-black/70 hover:bg-black/90 px-4 py-2 rounded-full text-sm"
-      >
-        ← Back
-      </a>
-
-
-      {/* HEADER */}
-      <section className="pt-32 pb-20 text-center max-w-4xl mx-auto px-4">
-        <motion.h1
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-4xl sm:text-5xl md:text-6xl font-extrabold"
-        >
-          Premium <span className="text-primary">Services</span>
-        </motion.h1>
-
-        <p className="mt-4 text-gray-400">
-          Everything you need to build, scale and dominate online.
-        </p>
+    <main className="page-shell">
+      <section className="mx-auto max-w-7xl px-4 pb-12 pt-36 sm:px-6 lg:px-8">
+        <div className="max-w-4xl">
+          <span className="eyebrow">Services and capabilities</span>
+          <h1 className="section-title mt-6 text-4xl font-black leading-tight text-white sm:text-5xl lg:text-6xl">
+            Premium design language, real business thinking and implementation that goes beyond a simple website.
+          </h1>
+          <p className="muted mt-6 max-w-3xl text-lg leading-8">
+            The goal is to help your business look organised, trustworthy and technically strong.
+            That can mean a company website, a product showcase, an internal dashboard or a
+            complete web plus APK workflow.
+          </p>
+        </div>
       </section>
 
-      {/* SERVICES GRID */}
-      <section className="max-w-7xl mx-auto px-4 grid sm:grid-cols-2 gap-10">
-        {services.map((s, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: i * 0.1 }}
-            whileHover={{ y: -8 }}
-            className="p-8 rounded-3xl border border-white/10 bg-white/5"
-          >
-            <h3 className="text-xl font-bold mb-3">{s.title}</h3>
-            <p className="text-gray-400 text-sm mb-4">{s.desc}</p>
+      <section className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          {serviceGroups.map((service) => (
+            <article key={service.title} className="glass-card rounded-[2rem] p-8">
+              <h2 className="text-2xl font-semibold text-white">{service.title}</h2>
+              <p className="muted mt-4 text-sm leading-7">{service.description}</p>
+              <div className="mt-6 space-y-3">
+                {service.items.map((item) => (
+                  <p key={item} className="text-sm text-slate-200">
+                    {item}
+                  </p>
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
 
-            <ul className="space-y-2 text-sm text-gray-300">
-              {s.points.map((p, idx) => (
-                <li key={idx}>✔ {p}</li>
+      <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+        <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
+          <div className="glass-card-strong rounded-[2rem] p-8">
+            <span className="eyebrow">Included value</span>
+            <h2 className="section-title mt-5 text-3xl font-bold text-white sm:text-4xl">
+              What makes the delivery feel company-grade
+            </h2>
+            <div className="mt-7 space-y-4">
+              {[
+                "Clear page hierarchy and stronger service messaging",
+                "Technical SEO setup and cleaner metadata foundation",
+                "Direct founder communication with faster decision making",
+                "Affordable execution compared to multi-layer agency models",
+              ].map((point) => (
+                <p key={point} className="text-sm leading-7 text-slate-200">
+                  {point}
+                </p>
               ))}
-            </ul>
-          </motion.div>
-        ))}
+            </div>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-3">
+            {pricingPlans.map((plan) => (
+              <article
+                key={plan.name}
+                className={`rounded-[2rem] p-7 ${
+                  plan.featured ? "glass-card-strong" : "glass-card"
+                }`}
+              >
+                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-200">
+                  {plan.name}
+                </p>
+                <h3 className="mt-4 text-3xl font-black text-white">{plan.price}</h3>
+                <p className="muted mt-4 text-sm leading-7">{plan.description}</p>
+              </article>
+            ))}
+          </div>
+        </div>
       </section>
 
-      {/* CTA */}
-      <section className="text-center mt-32 px-4">
-        <h2 className="text-3xl font-bold mb-4">
-          Need a custom solution?
-        </h2>
-        <p className="text-gray-400 mb-6">
-          Tell me your goal — I’ll design the right tech & strategy.
-        </p>
-        <a
-          href="https://wa.me/918574700615"
-          className="bg-primary px-10 py-4 rounded-full font-semibold"
-        >
-          Get Free Consultation
-        </a>
+      <section className="mx-auto max-w-7xl px-4 pb-20 pt-4 sm:px-6 lg:px-8">
+        <div className="glass-card rounded-[2rem] p-8 sm:p-10">
+          <span className="eyebrow">Start now</span>
+          <h2 className="section-title mt-5 text-3xl font-bold text-white sm:text-4xl">
+            Tell me the service you need and I will map the best structure for it.
+          </h2>
+          <p className="muted mt-4 max-w-3xl text-base leading-8">
+            Whether you need a redesign, a company website, a signage platform, a payroll system or
+            a hybrid product, we can shape the right scope and pricing around the business need.
+          </p>
+          <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+            <a
+              href={`${company.whatsapp}?text=Hi%20Amit%2C%20I%20need%20help%20with%20a%20website%20or%20software%20service`}
+              className="rounded-full bg-primary px-7 py-4 text-center text-base font-semibold text-slate-950"
+            >
+              Discuss on WhatsApp
+            </a>
+            <a
+              href={company.githubProof}
+              target="_blank"
+              rel="noreferrer"
+              className="rounded-full border border-white/10 px-7 py-4 text-center text-base font-semibold text-white"
+            >
+              View Public Proof
+            </a>
+          </div>
+        </div>
       </section>
     </main>
   );

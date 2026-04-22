@@ -1,73 +1,85 @@
-'use client';
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+"use client";
+
+import Link from "next/link";
+import { useState } from "react";
+import { company } from "../lib/siteContent";
+
+const links = [
+  { href: "/", label: "Home" },
+  { href: "/services", label: "Services" },
+  { href: "/work", label: "Projects" },
+  { href: "/about", label: "About" },
+];
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 w-full backdrop-blur bg-black/40 border-b border-white/10 z-50">
-      <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-        
-        {/* LOGO */}
-        <a href="/" className="font-bold text-lg sm:text-xl">
-          Amit<span className="text-primary">WebSolution</span>
-        </a>
+    <nav className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-slate-950/70 backdrop-blur-xl">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+        <Link href="/" className="flex items-center gap-3">
+          <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-amber-300/25 bg-amber-400/10 text-sm font-bold text-amber-200">
+            AW
+          </span>
+          <div>
+            <p className="text-sm font-semibold tracking-[0.24em] text-white/60">
+              AMIT WEB SOLUTION
+            </p>
+            <p className="text-sm text-slate-300">{company.tagline}</p>
+          </div>
+        </Link>
 
-        {/* DESKTOP MENU */}
-        <div className="hidden md:flex gap-6 items-center">
-          <a href="/work" className="text-sm text-gray-300 hover:text-white">
-            Work
-          </a>
-          <a href="/services" className="text-sm text-gray-300 hover:text-white">
-            Services
-          </a>
-          <a href="/about" className="text-sm text-gray-300 hover:text-white">
-            About
-          </a>
+        <div className="hidden items-center gap-8 md:flex">
+          {links.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="text-sm font-medium text-slate-300 transition hover:text-white"
+            >
+              {link.label}
+            </Link>
+          ))}
           <a
-            href="#contact"
-            className="bg-primary px-4 py-2 rounded-full text-sm font-medium"
+            href={`${company.whatsapp}?text=Hi%20Amit%2C%20I%20want%20to%20build%20a%20project`}
+            className="rounded-full bg-primary px-5 py-3 text-sm font-semibold text-slate-950 transition hover:brightness-110"
           >
             Get Quote
           </a>
         </div>
 
-        {/* HAMBURGER BUTTON (Mobile / Tablet) */}
         <button
-          onClick={() => setOpen(!open)}
-          className="md:hidden text-white text-2xl"
+          type="button"
+          aria-label="Toggle menu"
+          onClick={() => setOpen((value) => !value)}
+          className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white md:hidden"
         >
-          ☰
+          {open ? "X" : "Menu"}
         </button>
       </div>
 
-      {/* MOBILE MENU */}
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="md:hidden bg-black/90 border-t border-white/10"
-          >
-            <div className="flex flex-col px-6 py-6 gap-4">
-              <a onClick={() => setOpen(false)} href="/work">Work</a>
-              <a onClick={() => setOpen(false)} href="/services">Services</a>
-              <a onClick={() => setOpen(false)} href="/about">About</a>
-              <a
+      {open && (
+        <div className="border-t border-white/10 bg-slate-950/95 md:hidden">
+          <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-5 sm:px-6">
+            {links.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="text-base font-medium text-slate-200"
                 onClick={() => setOpen(false)}
-                href="#contact"
-                className="bg-primary px-4 py-2 rounded-full text-center"
               >
-                Get Quote
-              </a>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+                {link.label}
+              </Link>
+            ))}
+            <a
+              href={`${company.whatsapp}?text=Hi%20Amit%2C%20I%20want%20to%20build%20a%20project`}
+              className="rounded-full bg-primary px-5 py-3 text-center text-sm font-semibold text-slate-950"
+              onClick={() => setOpen(false)}
+            >
+              Start on WhatsApp
+            </a>
+          </div>
+        </div>
+      )}
     </nav>
-    
   );
 }

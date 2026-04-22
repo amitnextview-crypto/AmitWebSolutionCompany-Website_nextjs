@@ -17,11 +17,12 @@ module.exports = {
   content: [
     './app/**/*.{js,jsx}',
     './components/**/*.{js,jsx}',
+    './lib/**/*.{js,jsx}',
   ],
   theme: {
     extend: {
       colors: {
-        primary: '#7C3AED', // premium violet
+        primary: '#f59e0b',
       },
     },
   },
