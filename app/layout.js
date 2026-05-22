@@ -1,31 +1,33 @@
 import "./globals.css";
+import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
-import { company } from "../lib/siteContent";
+import { company, products, services } from "../lib/siteContent";
 
 export const metadata = {
-  metadataBase: new URL("https://amitwebsolution.example"),
+  metadataBase: new URL("https://amitwebsolution.com"),
   title: {
-    default: `${company.shortName} | Web, APK and Business Software`,
-    template: `%s | ${company.shortName}`,
+    default: `${company.name} | Custom Software Development & Business Automation`,
+    template: `%s | ${company.name}`,
   },
   description: company.description,
   keywords: [
-    "website development company india",
-    "next.js developer india",
-    "signage software developer",
-    "payroll system developer",
-    "payslip software developer",
-    "apk development service",
-    "seo website company",
+    "custom software development",
+    "website development company",
+    "mobile app development",
+    "payroll software",
+    "HRMS software",
+    "digital signage software",
+    "business automation solutions",
+    "Android TV signage",
   ],
   openGraph: {
-    title: `${company.shortName} | Web, APK and Business Software`,
+    title: `${company.name} | Custom Software Development & Business Automation`,
     description: company.description,
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: `${company.shortName} | Web, APK and Business Software`,
+    title: `${company.name} | Custom Software Development & Business Automation`,
     description: company.description,
   },
 };
@@ -33,39 +35,34 @@ export const metadata = {
 export default function RootLayout({ children }) {
   const organizationSchema = {
     "@context": "https://schema.org",
-    "@type": "ProfessionalService",
+    "@type": "Organization",
     name: company.name,
     description: company.description,
-    areaServed: "India",
     email: company.email,
     telephone: company.phone,
-    url: "https://amitwebsolution.example",
-    sameAs: [company.githubProof, company.whatsapp],
-    serviceType: [
-      "Business websites",
-      "Custom web applications",
-      "Digital signage software",
-      "Payroll and payslip systems",
-      "APK-ready product development",
-      "Technical SEO",
-    ],
+    areaServed: company.location,
+    knowsAbout: services.map((service) => service.title),
+    makesOffer: products.map((product) => ({
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "SoftwareApplication",
+        name: product.name,
+        applicationCategory: product.category,
+        description: product.description,
+      },
+    })),
   };
 
   return (
     <html lang="en">
       <head>
-        <meta
-          name="google-site-verification"
-          content="mBt9pJk7MgShnY53Su_xOzZQXQBuunHWQ_VgWeEs_ZE"
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
-        />
+        <meta name="google-site-verification" content="mBt9pJk7MgShnY53Su_xOzZQXQBuunHWQ_VgWeEs_ZE" />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
       </head>
       <body>
         <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );
